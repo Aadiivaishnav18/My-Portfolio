@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Enable Dark Mode Variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Root Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+  color: black;
+}
+
+/* Dark Theme */
+.dark body {
+  background-color: black;
+  color: white;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #34d399;
+}
+
+/* Remove default link underline */
+a {
+  text-decoration: none;
+}
+
+/* Universal Box Sizing */
+* {
+  box-sizing: border-box;
+}
