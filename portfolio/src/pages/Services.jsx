@@ -4,96 +4,99 @@ import {
   FaPaintBrush,
   FaLaptopCode,
   FaMobileAlt,
+  FaArrowRight,
 } from "react-icons/fa";
 
 export default function Services() {
   const services = [
     {
-      icon: <FaCode size={35} />,
+      icon: <FaCode size={22} />,
       title: "Web Development",
-      desc: "Modern responsive websites built with latest technologies and clean architecture.",
+      desc: "Modern responsive websites built with the latest technologies, ensuring robust performance and clean architecture.",
     },
     {
-      icon: <FaPaintBrush size={35} />,
+      icon: <FaPaintBrush size={22} />,
       title: "UI/UX Design",
-      desc: "Creative and user-friendly interface designs focused on better user experience.",
+      desc: "Intuitive and visually striking interface designs focused on maximizing user engagement and seamless experiences.",
     },
     {
-      icon: <FaLaptopCode size={35} />,
-      title: "Frontend Development",
-      desc: "React.js based fast, scalable and modern frontend web applications.",
+      icon: <FaLaptopCode size={22} />,
+      title: "Frontend Dev",
+      desc: "Fast, highly scalable, and dynamic single-page applications engineered primarily with React.js.",
     },
     {
-      icon: <FaMobileAlt size={35} />,
+      icon: <FaMobileAlt size={22} />,
       title: "Responsive Design",
-      desc: "Mobile-first layouts optimized beautifully across all screen sizes.",
+      desc: "Pixel-perfect, mobile-first layouts that adapt beautifully and function flawlessly across all devices.",
     },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60 } },
+  };
 
   return (
     <section
       id="services"
-      className="pt-24 px-6 md:px-16 min-h-screen bg-white dark:bg-black text-black dark:text-white transition relative overflow-hidden"
+      className="pt-24 pb-24 px-6 md:px-16 min-h-screen bg-white dark:bg-black text-black dark:text-white transition relative overflow-hidden flex flex-col justify-center"
     >
-      {/* Background Glow */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-emerald-500 opacity-10 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-emerald-400 opacity-10 blur-3xl rounded-full"></div>
+      <div className="absolute top-10 left-10 w-72 h-72 bg-emerald-500 opacity-10 blur-3xl rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-emerald-400 opacity-10 blur-3xl rounded-full pointer-events-none"></div>
 
-      {/* Heading */}
       <motion.h2
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold text-center text-emerald-500 mb-14 relative z-10"
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl md:text-5xl font-bold text-center mb-14 relative z-10"
       >
-        My Services
+        What I <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Offer</span>
       </motion.h2>
 
-      {/* Service Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10 w-full max-w-7xl mx-auto"
+      >
         {services.map((service, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 }}
-            whileHover={{
-              y: -12,
-              scale: 1.05,
-            }}
-            className="
-              group relative overflow-hidden
-              bg-gray-100 dark:bg-gray-900
-              p-8 rounded-3xl shadow-xl
-              border border-gray-200 dark:border-gray-700
-              hover:border-emerald-500
-              hover:shadow-emerald-500/20
-              transition-all duration-500 cursor-pointer
-            "
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="group relative bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-zinc-800 hover:border-emerald-500/50 transition-all duration-300 overflow-hidden"
           >
-            {/* Glow Circle */}
-            <div className="absolute -top-10 -right-10 w-24 h-24 bg-emerald-500 opacity-10 rounded-full group-hover:scale-150 transition duration-500"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-[80px] -z-10 group-hover:scale-110 transition-transform duration-500"></div>
 
-            {/* Icon */}
-            <div className="text-emerald-500 mb-5 text-4xl group-hover:scale-125 group-hover:rotate-6 transition duration-300">
-              {service.icon}
+            <div className="flex justify-between items-start mb-5">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 text-emerald-500 shadow-sm group-hover:shadow-emerald-500/20 group-hover:-translate-y-1 transition-all duration-300">
+                {service.icon}
+              </div>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 dark:bg-zinc-800 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-emerald-500 transition-all duration-300">
+                <FaArrowRight size={14} />
+              </div>
             </div>
 
-            {/* Title */}
-            <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition">
+            <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 tracking-tight group-hover:text-emerald-500 transition-colors duration-300">
               {service.title}
             </h3>
 
-            {/* Description */}
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
               {service.desc}
             </p>
-
-            {/* Bottom Accent Line */}
-            <div className="mt-6 h-1 w-12 bg-emerald-500 rounded-full group-hover:w-24 transition-all duration-500"></div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
