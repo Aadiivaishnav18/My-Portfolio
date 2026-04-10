@@ -7,7 +7,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Detect scroll to add glassmorphism effect dynamically
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -52,11 +51,11 @@ export default function Navbar() {
             <Link
               key={item}
               to={item}
-              spy={true} // Enables active state highlighting
+              spy={true} 
               smooth={true}
               duration={600}
-              offset={-80} // Perfectly offsets the fixed navbar height
-              activeClass="text-emerald-500 font-bold border-b-2 border-emerald-500 pb-1" // What it looks like when active
+              offset={-80} 
+              activeClass="text-emerald-500 font-bold border-b-2 border-emerald-500 pb-1" 
               className="cursor-pointer text-gray-600 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400 font-medium transition-all duration-300 capitalize text-sm lg:text-base"
             >
               {item}

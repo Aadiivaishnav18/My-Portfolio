@@ -3,24 +3,24 @@ import { FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 
 export default function Experience() {
   const experiences = [
+
     {
-      company: "SYNILOGIC TECH PRIVATE LIMITED",
-      role: "Full Stack Web Developer Intern",
-      date: "May 2025 - Jul 2025",
-      desc: "Developed backend modules and conducted RESTful API testing for robust web applications.",
+     company: "Notesea",
+    role: "Frontend Developer (Project Collaboration)",
+     date: "October 2026 -Present",
+     desc: "Built a parcel tracking website and Streaming Website-style clone with responsive and interactive UI.",
     },
+
+
+
     {
-      company: "IBM Skills Build & CSRBOX",
-      role: "Project Based Learning Trainee",
-      date: "Jul 2025 - Aug 2025",
-      desc: "Trained in modern web technologies and component-based design to build scalable applications.",
+      company: "International Business Machines Corporation (IBM)",
+      role: "IBM Skills Build Project-Based Learning Program (via CSRBOX)",
+      date: "Jul 2025– Aug 2025",
+      desc: "Built responsive sustainable development web pages and dynamic interactive sections with a strong focus on clean UI/UX and user-friendly design.",
     },
-    {
-      company: "DOOPER HEALTH TECHNOLOGY",
-      role: "Frontend Web Developer Intern",
-      date: "Jul 2024 - Aug 2024",
-      desc: "Built responsive healthcare web pages and dynamic forms focusing on seamless UI/UX.",
-    },
+    
+     
   ];
 
   const containerVariants = {

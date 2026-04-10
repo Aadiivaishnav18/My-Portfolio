@@ -1,125 +1,231 @@
-import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaGithub,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const projects = [
-  {
-    title: "Elite-Crew",
-    desc: "A comprehensive full-stack application built using the MERN stack, focusing on responsive design, secure authentication, and robust backend architecture.",
-    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "Note-Nest",
-    desc: "A dynamic MERN stack note-taking application featuring modern UI aesthetics, seamless data flow, and highly optimized RESTful APIs.",
-    img: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800",
-    github: "#",
-    live: "#",
-  },
-  {
+  
+    {
     title: "Dream Miles",
-    desc: "An interactive web platform crafted with a modern glassmorphism UI, engaging video backgrounds, and smooth framer-motion animations.",
-    img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800",
-    github: "#",
+    subtitle: "Interactive UI Platform",
+    desc: "An interactive web platform crafted with a modern glassmorphism UI, engaging video backgrounds, and smooth framer-motion animations to deliver a premium user experience.",
+    tech: "React, Tailwind CSS, Framer Motion",
+    github: "https://github.com/Aadiivaishnav18/Dream-Miles",
     live: "#",
   },
+
+ {
+    title: "SkyCast",
+    subtitle: "Weather Forecasting App",
+    desc: "A responsive weather web app that displays real-time and forecast weather data, including air quality, UV index, and astronomy details, using WeatherAPI.",
+    tech: "HTML, CSS, JS, React",
+    github: "https://github.com/Aadiivaishnav18/SkyCast",
+    live: "#",
+  },
+
   {
-    title: "Live Weather App",
-    desc: "A real-time weather forecasting application integrating external APIs to provide accurate data with a clean, mobile-first responsive layout.",
-    img: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=800",
-    github: "#",
-    live: "#",
-  },
+  title: "Snake Game",
+  subtitle: "Interactive Browser Game",
+  desc: "A classic Snake Game built using HTML, CSS, and JavaScript with smooth controls, score tracking, and responsive gameplay for an engaging user experience.",
+  tech: "HTML, CSS, JavaScript",
+  github: "https://github.com/Aadiivaishnav18/Snake-Game",
+  live: "#",
+},
+
+ 
 ];
 
 export default function Projects() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const nextProject = () => {
+    setDirection(1);
+    setCurrentIndex((prev) =>
+      prev === projects.length - 1 ? 0 : prev + 1
+    );
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60 } },
+  const prevProject = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) =>
+      prev === 0 ? projects.length - 1 : prev - 1
+    );
   };
 
   return (
     <section
       id="projects"
-      className="pt-24 pb-24 px-6 md:px-16 min-h-screen bg-white dark:bg-black text-black dark:text-white transition relative overflow-hidden flex flex-col justify-center"
+      className="
+        pt-24 pb-24 px-6 md:px-16 min-h-screen
+        bg-white dark:bg-black
+        text-black dark:text-white
+        transition-colors duration-500
+        relative overflow-hidden flex flex-col items-center justify-center
+      "
     >
-      <div className="absolute top-10 left-[-10%] w-96 h-96 bg-emerald-500 opacity-10 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-10 right-[-10%] w-96 h-96 bg-emerald-400 opacity-10 blur-[120px] rounded-full pointer-events-none"></div>
+    
+      <div className="absolute top-10 left-[-10%] w-96 h-96 bg-purple-500 opacity-10 dark:opacity-5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-10 right-[-10%] w-96 h-96 bg-blue-500 opacity-10 dark:opacity-5 blur-[120px] rounded-full pointer-events-none"></div>
 
+      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-4xl md:text-5xl font-bold text-center mb-16 relative z-10"
+        className="text-4xl md:text-5xl font-extrabold text-center mb-16 relative z-10 text-transparent bg-clip-text bg-gradient-to-r  bg-emerald-500"
       >
-        Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Projects</span>
+        Projects
       </motion.h2>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
-        className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto relative z-10 w-full"
-      >
-        {projects.map((project, idx) => (
-          <motion.div
-            key={idx}
-            variants={itemVariants}
-            whileHover={{ y: -8 }}
-            className="group bg-gray-50 dark:bg-zinc-900/50 rounded-3xl border border-gray-200 dark:border-zinc-800 shadow-lg hover:shadow-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300 flex flex-col overflow-hidden"
-          >
-            {/* Image Container */}
-            <div className="relative overflow-hidden h-48 md:h-52 w-full">
-              <div className="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-              <img
-                src={project.img}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-            </div>
+  
+      <div className="relative w-full max-w-5xl flex items-center justify-center z-10">
 
-            {/* Content */}
-            <div className="p-6 flex flex-col flex-grow">
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3 group-hover:text-emerald-500 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed mb-6 flex-grow">
-                {project.desc}
+        {/* Left Arrow */}
+        <button
+          onClick={prevProject}
+          className="
+            hidden md:flex absolute -left-16 w-12 h-12
+            bg-gray-200 dark:bg-zinc-800
+            hover:bg-gray-300 dark:hover:bg-zinc-700
+            text-black dark:text-white
+            rounded-full items-center justify-center transition-all shadow-lg z-20
+          "
+        >
+          <FaChevronLeft size={18} />
+        </button>
+
+        {/* Card */}
+        <div className="w-full overflow-hidden px-2 py-4">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: direction * 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -50 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="
+                bg-gray-50 dark:bg-[#1a1a1a]
+                rounded-3xl p-8 md:p-10
+                border border-gray-200 dark:border-zinc-800
+                shadow-2xl w-full
+                transition-colors duration-500
+              "
+            >
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg shrink-0">
+                  {currentIndex + 1}
+                </div>
+
+                <div>
+                  <h3 className="text-3xl font-bold text-black dark:text-white mb-1 tracking-wide">
+                    {projects[currentIndex].title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-lg">
+                    {projects[currentIndex].subtitle}
+                  </p>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-10">
+                {projects[currentIndex].desc}
               </p>
 
-              {/* Links */}
-              <div className="flex gap-4 mt-auto">
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-400 text-black rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-sm"
-                >
-                  <FaExternalLinkAlt size={14} /> Live
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white dark:bg-zinc-800 text-gray-800 dark:text-white border border-gray-200 dark:border-zinc-700 rounded-xl font-bold hover:bg-gray-100 dark:hover:bg-zinc-700 hover:scale-105 active:scale-95 transition-all shadow-sm"
-                >
-                  <FaGithub size={16} /> GitHub
-                </a>
+              {/* Footer */}
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-t border-gray-200 dark:border-zinc-800/50 pt-8">
+                <div className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
+                  <span className="font-bold text-black dark:text-white">
+                    Tech Stack:
+                  </span>{" "}
+                  {projects[currentIndex].tech}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <a
+                    href={projects[currentIndex].github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      flex items-center gap-2 px-6 py-3
+                      bg-gray-200 dark:bg-zinc-800
+                      hover:bg-gray-300 dark:hover:bg-zinc-700
+                      text-black dark:text-white
+                      rounded-full font-semibold transition-all shadow-md
+                    "
+                  >
+                    <FaGithub size={18} /> GitHub
+                  </a>
+
+                  <a
+                    href={projects[currentIndex].live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      flex items-center gap-2 px-6 py-3
+                      bg-gradient-to-r from-indigo-600 to-blue-500
+                      hover:from-indigo-500 hover:to-blue-400
+                      text-white rounded-full font-semibold transition-all
+                      shadow-[0_0_20px_rgba(79,70,229,0.3)]
+                    "
+                  >
+                    Live Website
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={nextProject}
+          className="
+            hidden md:flex absolute -right-16 w-12 h-12
+            bg-gray-200 dark:bg-zinc-800
+            hover:bg-gray-300 dark:hover:bg-zinc-700
+            text-black dark:text-white
+            rounded-full items-center justify-center transition-all shadow-lg z-20
+          "
+        >
+          <FaChevronRight size={18} />
+        </button>
+      </div>
+
+      {/* Mobile Controls */}
+      <div className="flex md:hidden items-center gap-6 mt-8 z-10">
+        <button
+          onClick={prevProject}
+          className="w-10 h-10 bg-gray-200 dark:bg-zinc-800 text-black dark:text-white rounded-full flex items-center justify-center"
+        >
+          <FaChevronLeft size={14} />
+        </button>
+
+        <div className="flex gap-2">
+          {projects.map((_, idx) => (
+            <div
+              key={idx}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === currentIndex
+                  ? "w-6 bg-blue-500"
+                  : "w-2 bg-gray-400 dark:bg-zinc-700"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={nextProject}
+          className="w-10 h-10 bg-gray-200 dark:bg-zinc-800 text-black dark:text-white rounded-full flex items-center justify-center"
+        >
+          <FaChevronRight size={14} />
+        </button>
+      </div>
     </section>
   );
 }

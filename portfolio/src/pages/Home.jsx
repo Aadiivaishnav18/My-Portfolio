@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import meImage from "../assets/me.jpg";
+import resumeFile from "../assets/resume.pdf";
 
 export default function Home() {
   const containerVariants = {
@@ -29,6 +30,21 @@ export default function Home() {
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } },
   };
 
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      url: "https://github.com/Aadiivaishnav18",
+    },
+    {
+      icon: FaLinkedin,
+      url: "https://www.linkedin.com/in/aditya-vaishnav-b5b490327/", 
+    },
+    {
+      icon: FaInstagram,
+      url: "https://www.instagram.com/ditya.6319/", 
+    },
+  ];
+
   return (
     <section
       id="home"
@@ -46,9 +62,9 @@ export default function Home() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight tracking-tight"
+          className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-4 leading-tight tracking-tight"
         >
-          Hi, I'm <br />
+          Hi, I'm{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 drop-shadow-sm">
             Aditya
           </span>
@@ -77,30 +93,44 @@ export default function Home() {
         >
           I create modern, responsive, and interactive web experiences with React.js, Tailwind CSS, and smooth animations.
         </motion.p>
+             
 
-        <motion.div variants={itemVariants} className="flex gap-4 mb-10 flex-wrap">
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(16, 185, 129, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-emerald-500 to-emerald-400 text-black px-8 py-3.5 rounded-full font-bold shadow-lg transition-all duration-300"
-          >
-            Hire Me
-          </motion.button>
+             <motion.div variants={itemVariants} className="flex gap-4 mb-10 flex-wrap">
+  {/* Download Resume */}
+  <motion.a
+    href={resumeFile}
+    download="Aditya_Resume.pdf"
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 0px 20px rgba(16, 185, 129, 0.4)",
+    }}
+    whileTap={{ scale: 0.95 }}
+    className="bg-gradient-to-r from-emerald-500 to-emerald-400 text-black px-8 py-3.5 rounded-full font-bold shadow-lg transition-all duration-300 inline-block text-center"
+  >
+    Download Resume
+  </motion.a>
 
-          <motion.button
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(16, 185, 129, 0.1)" }}
-            whileTap={{ scale: 0.95 }}
-            className="border-2 border-emerald-500 text-emerald-500 px-8 py-3.5 rounded-full font-bold transition-all duration-300 backdrop-blur-sm"
-          >
-            Download Resume
-          </motion.button>
-        </motion.div>
+  {/* Contact */}
+  <motion.a
+    href="#contact"
+    whileHover={{
+      scale: 1.05,
+      backgroundColor: "rgba(16, 185, 129, 0.1)",
+    }}
+    whileTap={{ scale: 0.95 }}
+    className="border-2 border-emerald-500 text-emerald-500 px-8 py-3.5 rounded-full font-bold transition-all duration-300 backdrop-blur-sm inline-block text-center"
+  >
+    Contact Me
+  </motion.a>
+</motion.div>
 
         <motion.div variants={itemVariants} className="flex gap-6 text-3xl text-gray-400">
-          {[FaGithub, FaLinkedin, FaInstagram].map((Icon, index) => (
+          {socialLinks.map(({ icon: Icon, url }, index) => (
             <motion.a
               key={index}
-              href="#"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.2, color: "#10b981", rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className="transition-colors duration-300"
@@ -140,9 +170,6 @@ export default function Home() {
             className="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover shadow-[0_0_40px_rgba(16,185,129,0.3)] border-4 border-emerald-500/50"
           />
 
-          {/* --- 5 USEFUL TECH POPS (DIFFERENT SIZES, PLACED FURTHER AWAY) --- */}
-
-          {/* Pop 1: Extra Large - React */}
           <motion.div
             className="absolute top-[-5%] -left-8 md:top-[5%] md:-left-28 bg-white dark:bg-zinc-900 p-5 md:p-6 rounded-2xl shadow-2xl border border-gray-200 dark:border-zinc-800 text-emerald-500 text-4xl md:text-6xl"
             animate={{ y: [0, -15, 0], rotate: [0, -5, 0] }}
@@ -152,7 +179,6 @@ export default function Home() {
             <FaReact />
           </motion.div>
 
-          {/* Pop 2: Large - JavaScript */}
           <motion.div
             className="absolute bottom-[5%] -right-6 md:bottom-[10%] md:-right-24 bg-white dark:bg-zinc-900 p-4 md:p-5 rounded-3xl shadow-xl border border-gray-200 dark:border-zinc-800 text-emerald-400 text-3xl md:text-5xl"
             animate={{ y: [0, 15, 0], rotate: [0, 10, 0] }}
@@ -162,7 +188,6 @@ export default function Home() {
             <FaJs />
           </motion.div>
 
-          {/* Pop 3: Medium - Node.js */}
           <motion.div
             className="absolute top-[10%] -right-4 md:-top-[5%] md:-right-16 bg-white dark:bg-zinc-900 p-3 md:p-4 rounded-full shadow-lg border border-gray-200 dark:border-zinc-800 text-emerald-500 text-2xl md:text-4xl"
             animate={{ y: [0, -10, 0], scale: [1, 1.05, 1] }}
@@ -172,7 +197,6 @@ export default function Home() {
             <FaNodeJs />
           </motion.div>
 
-          {/* Pop 4: Small - HTML5 */}
           <motion.div
             className="absolute bottom-[20%] -left-10 md:bottom-[25%] md:-left-20 bg-white dark:bg-zinc-900 p-2 md:p-3 rounded-xl shadow-md border border-gray-200 dark:border-zinc-800 text-emerald-400 text-xl md:text-2xl"
             animate={{ y: [0, 10, 0], rotate: [0, -10, 0] }}
@@ -182,7 +206,6 @@ export default function Home() {
             <FaHtml5 />
           </motion.div>
 
-          {/* Pop 5: Extra Small - CSS3 */}
           <motion.div
             className="absolute top-[45%] -right-10 md:top-[40%] md:-right-32 bg-white dark:bg-zinc-900 p-1.5 md:p-2 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-800 text-emerald-500 text-lg md:text-xl"
             animate={{ x: [0, -10, 0], y: [0, -5, 0] }}

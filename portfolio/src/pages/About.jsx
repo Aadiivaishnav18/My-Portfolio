@@ -1,95 +1,163 @@
 import { motion } from "framer-motion";
 
-const About = () => {
+
+export default function About() {
+  const hobbies = [
+    "Frontend Development",
+    "DSA & Problem Solving",
+    "Cricket",
+    "Travelling",
+    "Cooking"
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60 } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 60,
+      },
+    },
   };
 
   return (
     <section
       id="about"
-      className="py-24 px-6 md:px-16 relative overflow-hidden bg-white dark:bg-black text-black dark:text-white transition"
+      className="
+        pt-24 pb-24 px-6 md:px-16 min-h-screen
+        bg-white dark:bg-black
+        text-gray-800 dark:text-gray-300
+        transition-colors duration-500
+        relative overflow-hidden flex items-center justify-center
+      "
     >
-      <div className="absolute top-20 right-10 w-72 h-72 bg-emerald-500 opacity-10 blur-3xl rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-emerald-400 opacity-10 blur-3xl rounded-full pointer-events-none"></div>
+    
+      <div className="absolute top-20 right-10 w-72 h-72 bg-emerald-500 opacity-5 blur-[120px] rounded-full pointer-events-none"></div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16"
-        >
-          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Me</span>
-        </motion.h2>
+      <div className="max-w-7xl mx-auto w-full flex flex-col gap-10">
+    
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
-            className="relative"
+            className="relative flex justify-center md:justify-end"
           >
-            <div className="absolute -inset-4 border-2 border-emerald-500/20 rounded-2xl -z-10 translate-x-3 translate-y-3"></div>
-            <div className="absolute inset-0 bg-emerald-500/10 rounded-xl -z-10 blur-xl"></div>
-            
-            <img
-              src="https://images.pexels.com/photos/14553709/pexels-photo-14553709.jpeg"
-              alt="About Me"
-              className="rounded-xl shadow-lg w-full h-80 md:h-[26rem] object-cover border border-gray-200 dark:border-zinc-800 relative z-10"
-            />
+            <div
+              className="
+                w-64 h-64 md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px]
+                relative rounded-2xl overflow-hidden
+                bg-gray-100 dark:bg-zinc-900
+                transition-colors duration-500 shadow-lg
+              "
+            >
+              <img
+                src="https://images.pexels.com/photos/36571389/pexels-photo-36571389.jpeg"
+                alt="Aditya Avatar"
+                className="w-full h-full object-cover relative z-10"
+              />
+            </div>
           </motion.div>
 
+          {/* Right Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
+            className="relative"
           >
-            <motion.p variants={itemVariants} className="text-gray-600 dark:text-gray-400 mb-5 text-base lg:text-lg leading-relaxed">
-              I am a passionate web developer focused on building scalable, performant frontend architectures. Currently pursuing my B.Tech in Computer Science & Engineering at Arya College of Engineering, I bridge the gap between design and solid engineering.
-            </motion.p>
-            
-            <motion.p variants={itemVariants} className="text-gray-600 dark:text-gray-400 mb-8 text-base lg:text-lg leading-relaxed">
-              I thrive on turning complex problems into beautiful, intuitive, and highly functional digital experiences. Let's build something amazing together.
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-bold text-emerald-500 mb-8"
+            >
+              About Me
+            </motion.h2>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg leading-relaxed mb-6"
+            >
+              I'm Aditya, a passionate{" "}
+              <strong className="text-black dark:text-white">
+                Frontend Developer
+              </strong>{" "}
+              focused on crafting modern, responsive, and user-friendly web
+              interfaces using{" "}
+              <strong className="text-black dark:text-white">
+                React.js, JavaScript, and Tailwind CSS
+              </strong>.
             </motion.p>
 
-            <div className="grid grid-cols-2 gap-5">
-              {[
-                { label: "Projects Completed", value: "15+" },
-                { label: "Years Experience", value: "2+" }
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className="p-6 bg-gray-50 dark:bg-zinc-900/50 rounded-2xl border border-gray-200 dark:border-zinc-800 text-center hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 group cursor-default"
-                >
-                  <h4 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2 group-hover:text-emerald-500 transition-colors">
-                    {stat.value}
-                  </h4>
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg leading-relaxed"
+            >
+              I enjoy turning ideas into visually appealing and functional
+              digital experiences with clean design and smooth performance.
+              Currently pursuing my{" "}
+              <strong className="text-black dark:text-white">
+                B.Tech in Computer Science
+              </strong>{" "}
+              with a{" "}
+              <strong className="text-black dark:text-white">
+                CGPA of 8.6/10
+              </strong>
+              , and actively improving my skills through projects, hackathons,
+              and coding competitions.
+            </motion.p>
           </motion.div>
         </div>
+
+        {/* Hobbies */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col items-center md:items-start"
+        >
+          <h3 className="text-2xl font-bold text-black dark:text-white mb-5">
+            Hobbies & Interests
+          </h3>
+
+          <div className="flex flex-wrap justify-center md:justify-start gap-3 max-w-full">
+            {hobbies.map((hobby, index) => (
+              <motion.span
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="
+                  px-3 py-1.5 md:px-4 md:py-2 rounded-full
+                  bg-emerald-500/10 border border-emerald-500/20
+                  text-emerald-500 dark:text-emerald-400
+                  text-xs md:text-sm font-medium cursor-default shadow-sm
+                  hover:bg-emerald-500/20 hover:border-emerald-500/40
+                  transition-all duration-300
+                "
+              >
+                {hobby}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

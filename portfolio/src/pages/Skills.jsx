@@ -33,12 +33,17 @@ export default function Skills() {
     {
       icon: <FaLaptopCode />,
       title: "CS Fundamentals",
-      items: ["DBMS", "Object-Oriented Programming", "Problem Solving"],
+      items: ["DBMS", "OOP", "Problem Solving"],
     },
     {
       icon: <FaUsers />,
       title: "Soft Skills",
-      items: ["Effective Communication", "Teamwork", "Leadership", "Quick Learning"],
+      items: [
+        "Effective Communication",
+        "Teamwork",
+        "Leadership",
+        "Quick Learning",
+      ],
     },
   ];
 
@@ -52,25 +57,33 @@ export default function Skills() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 50 },
+    },
   };
 
   return (
     <section
       id="skills"
-      className="pt-24 pb-32 px-6 md:px-16 min-h-screen bg-white dark:bg-black text-black dark:text-white transition relative overflow-hidden flex flex-col justify-center"
+      className="pt-24 pb-28 px-6 md:px-16 min-h-screen bg-white dark:bg-black text-black dark:text-white transition relative overflow-hidden flex flex-col justify-center"
     >
+      {/* Background Glow */}
       <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-emerald-500 opacity-10 blur-[120px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-emerald-400 opacity-10 blur-[100px] rounded-full pointer-events-none"></div>
 
+      {/* Section Title */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-5xl md:text-6xl font-extrabold text-center mb-20 relative z-10"
+        className="text-3xl md:text-4xl font-bold text-center mb-16 relative z-10"
       >
-        My <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Arsenal</span>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+          Skills
+        </span>
       </motion.h2>
 
       <motion.div
@@ -78,26 +91,36 @@ export default function Skills() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid md:grid-cols-2 gap-x-16 gap-y-12 max-w-6xl mx-auto relative z-10 w-full"
+        className="grid md:grid-cols-2 gap-x-12 gap-y-10 max-w-6xl mx-auto relative z-10 w-full"
       >
         {skills.map((skill, index) => (
-          <motion.div key={index} variants={itemVariants} className="flex flex-col">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 text-2xl border border-emerald-500/20">
+          <motion.div
+            key={index}
+            variants={itemVariants}
+            className="flex flex-col"
+          >
+          
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-500 text-xl border border-emerald-500/20">
                 {skill.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 tracking-wide">
+              <h3 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-gray-100 tracking-wide">
                 {skill.title}
               </h3>
             </div>
 
-            <div className="flex flex-wrap gap-3 pl-4 md:pl-16 border-l-2 border-emerald-500/20">
+            {/* Skill Items */}
+            <div className="flex flex-wrap gap-3 pl-4 md:pl-14 border-l-2 border-emerald-500/20">
               {skill.items.map((item, i) => (
                 <motion.span
                   key={i}
-                  whileHover={{ scale: 1.05, backgroundColor: "#10b981", color: "#000" }}
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "#10b981",
+                    color: "#000",
+                  }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 text-sm md:text-base font-medium rounded-full bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-600 dark:text-gray-300 transition-colors duration-300 cursor-default shadow-sm"
+                  className="px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-600 dark:text-gray-300 transition-colors duration-300 cursor-default shadow-sm"
                 >
                   {item}
                 </motion.span>

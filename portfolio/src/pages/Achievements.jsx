@@ -6,23 +6,14 @@ export default function Achievements() {
     {
       icon: <FaMedal size={22} />,
       title: "PARANOX Hackathon",
-      desc: "Secured 2nd place in the PARANOX National Hackathon Event, showcasing advanced problem-solving and rapid development.",
+      desc: "Secured place in the PARANOX National Hackathon Event, showcasing advanced problem-solving and rapid development.",
     },
     {
       icon: <FaTrophy size={22} />,
       title: "IBM SkillsBuild",
       desc: "Completed the IBM SkillsBuild Project-Based Learning Program, focusing on modern web technologies and component-based design.",
     },
-    {
-      icon: <FaAward size={22} />,
-      title: "20+ Projects Built",
-      desc: "Developed multiple responsive, real-world full-stack applications and premium frontend architectures.",
-    },
-    {
-      icon: <FaStar size={22} />,
-      title: "Top Performer",
-      desc: "Consistently recognized as a top performer in academic pursuits and collaborative technical environments.",
-    },
+ 
   ];
 
   const containerVariants = {
