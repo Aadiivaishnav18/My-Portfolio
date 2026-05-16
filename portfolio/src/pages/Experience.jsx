@@ -7,7 +7,7 @@ export default function Experience() {
     {
      company: "Notesea",
     role: "Frontend Developer (Project Collaboration)",
-     date: "October 2026 -Present",
+     date: "Dec 2025 – Apr 2026",
      desc: "Built a parcel tracking website and Streaming Website-style clone with responsive and interactive UI.",
     },
 
@@ -16,7 +16,7 @@ export default function Experience() {
     {
       company: "International Business Machines Corporation (IBM)",
       role: "IBM Skills Build Project-Based Learning Program (via CSRBOX)",
-      date: "Jul 2025– Aug 2025",
+      date: "Jul 2025 – Aug 2025",
       desc: "Built responsive sustainable development web pages and dynamic interactive sections with a strong focus on clean UI/UX and user-friendly design.",
     },
     
