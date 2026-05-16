@@ -14,16 +14,16 @@ const projects = [
     desc: "An interactive web platform crafted with a modern glassmorphism UI, engaging video backgrounds, and smooth framer-motion animations to deliver a premium user experience.",
     tech: "React, Tailwind CSS, Framer Motion",
     github: "https://github.com/Aadiivaishnav18/Dream-Miles",
-    live: "#",
+    live: "https://dream-miles.netlify.app/",
   },
 
  {
-    title: "SkyCast",
-    subtitle: "Weather Forecasting App",
-    desc: "A responsive weather web app that displays real-time and forecast weather data, including air quality, UV index, and astronomy details, using WeatherAPI.",
-    tech: "HTML, CSS, JS, React",
-    github: "https://github.com/Aadiivaishnav18/SkyCast",
-    live: "#",
+   title: "NoteNest",
+subtitle: "Note Making App",
+desc: "A responsive note-making web app that allows users to create, edit, and delete notes easily. It provides a clean and simple interface for storing personal notes efficiently.",
+tech: "HTML, CSS, JS, React",
+github: "https://github.com/Aadiivaishnav18/NoteNest.git",
+live: "https://nexnote-webapp.netlify.app/",
   },
 
   {
@@ -32,7 +32,7 @@ const projects = [
   desc: "A classic Snake Game built using HTML, CSS, and JavaScript with smooth controls, score tracking, and responsive gameplay for an engaging user experience.",
   tech: "HTML, CSS, JavaScript",
   github: "https://github.com/Aadiivaishnav18/Snake-Game",
-  live: "#",
+  live: "https://venom-dash.netlify.app/signin.html",
 },
 
  
