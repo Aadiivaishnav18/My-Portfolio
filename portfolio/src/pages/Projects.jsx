@@ -23,7 +23,7 @@ subtitle: "Note Making App",
 desc: "A responsive note-making web app that allows users to create, edit, and delete notes easily. It provides a clean and simple interface for storing personal notes efficiently.",
 tech: "HTML, CSS, JS, React",
 github: "https://github.com/Aadiivaishnav18/NoteNest.git",
-live: "https://nexnote-webapp.netlify.app/",
+live: "https://notenest-webapp.netlify.app/",
   },
 
   {
