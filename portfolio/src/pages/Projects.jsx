@@ -27,8 +27,8 @@ live: "https://notenest-webapp.netlify.app/",
   },
 
   {
-  title: "Snake Game",
-  subtitle: "Interactive Browser Game",
+  title: "Venom-Dash",
+  subtitle: "Interactive Browser Snake Game",
   desc: "A classic Snake Game built using HTML, CSS, and JavaScript with smooth controls, score tracking, and responsive gameplay for an engaging user experience.",
   tech: "HTML, CSS, JavaScript",
   github: "https://github.com/Aadiivaishnav18/Snake-Game",
