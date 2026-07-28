@@ -7,35 +7,46 @@ import {
 } from "react-icons/fa";
 
 const projects = [
-  
-    {
-    title: "Dream Miles",
-    subtitle: "Interactive UI Platform",
-    desc: "An interactive web platform crafted with a modern glassmorphism UI, engaging video backgrounds, and smooth framer-motion animations to deliver a premium user experience.",
-    tech: "React, Tailwind CSS, Framer Motion",
-    github: "https://github.com/Aadiivaishnav18/Dream-Miles",
-    live: "https://dream-miles.netlify.app/",
-  },
+ {
+   title: "Dream Miles",
+   subtitle: "Interactive UI Platform",
+   desc: [
+     "Built a component-driven React frontend with Tailwind CSS and Framer Motion for polished micro-interactions.",
+     "Implemented glassmorphism hero sections with responsive video backgrounds and lazy-loaded media to improve performance.",
+     "Created reusable UI components (cards, modals, form elements) and a design system for consistency.",
+     "Focused on accessibility improvements: semantic markup, keyboard navigation, and ARIA attributes where needed.",
+   ],
+   tech: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+   github: "https://github.com/Aadiivaishnav18/Dream-Miles",
+   live: "https://dream-miles.netlify.app/",
+ },
 
  {
    title: "NoteNest",
-subtitle: "Note Making App",
-desc: "A responsive note-making web app that allows users to create, edit, and delete notes easily. It provides a clean and simple interface for storing personal notes efficiently.",
-tech: "HTML, CSS, JS, React",
-github: "https://github.com/Aadiivaishnav18/NoteNest.git",
-live: "https://notenest-webapp.netlify.app/",
-  },
+   subtitle: "Note Making App",
+   desc: [
+     "Developed a responsive React note-taking app with local persistence (localStorage).",
+     "Implemented CRUD operations with instant UI feedback and optimistic updates.",
+     "Added search and filter capabilities for quick note retrieval and a compact, accessible UI.",
+     "Structured components to enable future sync/auth integration easily.",
+   ],
+   tech: ["React", "HTML", "CSS", "JavaScript"],
+   github: "https://github.com/Aadiivaishnav18/NoteNest.git",
+   live: "https://notenest-webapp.netlify.app/",
+ },
 
-  {
-  title: "Venom-Dash",
-  subtitle: "Interactive Browser Snake Game",
-  desc: "A classic Snake Game built using HTML, CSS, and JavaScript with smooth controls, score tracking, and responsive gameplay for an engaging user experience.",
-  tech: "HTML, CSS, JavaScript",
-  github: "https://github.com/Aadiivaishnav18/Snake-Game",
-  live: "https://venom-dash.netlify.app/signin.html",
-},
-
- 
+ {
+   title: "Venom-Dash",
+   subtitle: "Interactive Browser Snake Game",
+   desc: [
+     "Classic Snake game implemented using canvas with smooth controls and responsive scaling.",
+     "Built performant game loop with efficient rendering and collision detection.",
+     "Added score tracking, difficulty progression, and mobile-friendly input handling.",
+   ],
+   tech: ["HTML", "CSS", "JavaScript"],
+   github: "https://github.com/Aadiivaishnav18/Snake-Game",
+   live: "https://venom-dash.netlify.app/signin.html",
+ },
 ];
 
 export default function Projects() {
@@ -132,18 +143,29 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-10">
-                {projects[currentIndex].desc}
-              </p>
+              {/* Description: bullet list with staggered animation */}
+              <motion.ul className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-8 space-y-2">
+                {projects[currentIndex].desc.map((point, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.08, duration: 0.36 }}
+                    className="list-disc pl-5"
+                  >
+                    {point}
+                  </motion.li>
+                ))}
+              </motion.ul>
 
-              {/* Footer */}
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-t border-gray-200 dark:border-zinc-800/50 pt-8">
-                <div className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
-                  <span className="font-bold text-black dark:text-white">
-                    Tech Stack:
-                  </span>{" "}
-                  {projects[currentIndex].tech}
+              {/* Tech tags + actions */}
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-t border-gray-200 dark:border-zinc-800/50 pt-6">
+                <div className="flex flex-wrap gap-2 text-sm md:text-base text-gray-700 dark:text-gray-300">
+                  {projects[currentIndex].tech.map((t, i) => (
+                    <span key={i} className="px-3 py-1 rounded-full bg-gray-100 dark:bg-zinc-900 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-zinc-800 text-xs md:text-sm">
+                      {t}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4">
@@ -162,20 +184,22 @@ export default function Projects() {
                     <FaGithub size={18} /> GitHub
                   </a>
 
-                  <a
-                    href={projects[currentIndex].live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      flex items-center gap-2 px-6 py-3
-                      bg-gradient-to-r from-indigo-600 to-blue-500
-                      hover:from-indigo-500 hover:to-blue-400
-                      text-white rounded-full font-semibold transition-all
-                      shadow-[0_0_20px_rgba(79,70,229,0.3)]
-                    "
-                  >
-                    Live Website
-                  </a>
+                  {projects[currentIndex].live && (
+                    <a
+                      href={projects[currentIndex].live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        flex items-center gap-2 px-6 py-3
+                        bg-gradient-to-r from-emerald-600 to-emerald-500
+                        hover:from-emerald-500 hover:to-emerald-400
+                        text-white rounded-full font-semibold transition-all
+                        shadow-[0_0_20px_rgba(16,185,129,0.18)]
+                      "
+                    >
+                      Live Website
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

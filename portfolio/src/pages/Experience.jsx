@@ -1,39 +1,54 @@
 import { motion } from "framer-motion";
-import { FaBriefcase, FaCalendarAlt } from "react-icons/fa";
+import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Experience() {
   const experiences = [
-
     {
-     company: "Notesea",
-    role: "Frontend Developer (Project Collaboration)",
-     date: "Dec 2025 – Apr 2026",
-     desc: "Built a parcel tracking website and Streaming Website-style clone with responsive and interactive UI.",
+      company: "Garage2Global Ventures Pvt. Ltd.",
+      role: "Web Development Intern",
+      date: "Jul 2026 – Aug 2026",
+      location: "Kota, Rajasthan, India",
+      desc: [
+        "Contributed to the design and development of modern web applications using HTML, CSS, JavaScript, and React.js.",
+        "Collaborated with developers to build responsive user interfaces and implement UI/UX enhancements.",
+        "Participated in application testing, debugging, and performance improvements to ensure code quality.",
+        "Followed industry-standard development practices while delivering clean, maintainable, and efficient code.",
+      ],
     },
-
-
-
+    {
+      company: "Notesea",
+      role: "Frontend Developer (Project Collaboration)",
+      date: "Dec 2025 – Apr 2026",
+      location: "Remote",
+      desc: [
+        "Built a parcel tracking website and a streaming-style clone with responsive and interactive UI.",
+        "Implemented component-driven UI with reusable React components and state management.",
+        "Improved accessibility and responsiveness across devices.",
+      ],
+    },
     {
       company: "International Business Machines Corporation (IBM)",
       role: "IBM Skills Build Project-Based Learning Program (via CSRBOX)",
       date: "Jul 2025 – Aug 2025",
-      desc: "Built responsive sustainable development web pages and dynamic interactive sections with a strong focus on clean UI/UX and user-friendly design.",
+      location: "Online",
+      desc: [
+        "Built responsive sustainable development web pages and dynamic interactive sections.",
+        "Focused on clean UI/UX and user-friendly design patterns.",
+      ],
     },
-    
-     
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.16, delayChildren: 0.2 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -40 },
-    show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 60 } },
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80 } },
   };
 
   return (
@@ -73,28 +88,42 @@ export default function Experience() {
               <FaBriefcase size={16} />
             </div>
 
-            <motion.div
-              whileHover={{ y: -3 }}
-              className="bg-gray-50 dark:bg-zinc-900/60 p-6 md:p-8 rounded-2xl border border-gray-200 dark:border-zinc-800 hover:border-emerald-500/50 transition-all duration-300"
-            >
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
-                <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 group-hover:text-emerald-500 transition-colors">
-                  {exp.role}
-                </h3>
-                <div className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full w-fit">
-                  <FaCalendarAlt size={12} />
-                  <span>{exp.date}</span>
+            {/* Card with perspective for subtle 3D */}
+            <div style={{ perspective: 1200 }}>
+              <motion.div
+                whileHover={{ rotateY: 8, rotateX: 2, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 120 }}
+                className="bg-gray-50 dark:bg-zinc-900/60 p-6 md:p-8 rounded-2xl border border-gray-200 dark:border-zinc-800 hover:border-emerald-500/50 transition-all duration-300 will-change-transform"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 group-hover:text-emerald-500 transition-colors">
+                      {exp.role}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 mt-1">
+                      <FaMapMarkerAlt size={12} />
+                      <span className="font-medium">{exp.location}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full w-fit">
+                    <FaCalendarAlt size={12} />
+                    <span>{exp.date}</span>
+                  </div>
                 </div>
-              </div>
 
-              <h4 className="text-base md:text-lg font-semibold mb-3 text-gray-700 dark:text-gray-300">
-                {exp.company}
-              </h4>
+                <h4 className="text-base md:text-lg font-semibold mb-3 text-gray-700 dark:text-gray-300">
+                  {exp.company}
+                </h4>
 
-              <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
-                {exp.desc}
-              </p>
-            </motion.div>
+                <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+                  {exp.desc.map((d, i) => (
+                    <li key={i}>{d}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
           </motion.div>
         ))}
       </motion.div>

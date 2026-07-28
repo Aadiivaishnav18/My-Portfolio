@@ -102,7 +102,7 @@ export default function Home() {
     download="Aditya_Resume.pdf"
     whileHover={{
       scale: 1.05,
-      boxShadow: "0px 0px 20px rgba(16, 185, 129, 0.4)",
+      boxShadow: "0px 0px 26px rgba(6,182,212,0.3)",
     }}
     whileTap={{ scale: 0.95 }}
     className="bg-gradient-to-r from-emerald-500 to-emerald-400 text-black px-8 py-3.5 rounded-full font-bold shadow-lg transition-all duration-300 inline-block text-center"

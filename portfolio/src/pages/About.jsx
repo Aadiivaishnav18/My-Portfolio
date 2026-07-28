@@ -95,12 +95,12 @@ export default function About() {
               className="text-base md:text-lg leading-relaxed mb-6"
             >
               I'm Aditya, a passionate{" "}
-              <strong className="text-black dark:text-white">
+              <strong className="text-white">
                 Frontend Developer
               </strong>{" "}
               focused on crafting modern, responsive, and user-friendly web
               interfaces using{" "}
-              <strong className="text-black dark:text-white">
+              <strong className="text-white">
                 React.js, JavaScript, and Tailwind CSS
               </strong>.
             </motion.p>

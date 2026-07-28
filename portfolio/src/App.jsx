@@ -1,8 +1,8 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ThemeToggle from "./components/ThemeToggle";
 import Loader from "./components/Loader";
 import BackToTop from "./components/BackToTop";
+import Background from "./components/Background";
 
 import Home from "./pages/Home"; 
 import About from "./pages/About";
@@ -19,8 +19,8 @@ export default function App() {
   return (
     <>
       <Loader />
+      <Background />
       <Navbar />
-      <ThemeToggle />
       <Home />
       <About />
       <Experience />

@@ -13,7 +13,7 @@ export default function Skills() {
     {
       icon: <FaCode />,
       title: "Languages",
-      items: ["JavaScript", "SQL", "C/C++", "HTML", "CSS"],
+      items: ["JavaScript", "HTML5", "CSS3", "C/C++", "SQL"],
     },
     {
       icon: <FaLayerGroup />,
@@ -23,12 +23,12 @@ export default function Skills() {
     {
       icon: <FaDatabase />,
       title: "Database",
-      items: ["MySQL"],
+      items: ["MySQL", "Firebase"],
     },
     {
       icon: <FaTools />,
       title: "Tools & Tech",
-      items: ["Git/GitHub", "VS Code", "Vercel", "Netlify", "npm"],
+      items: ["Git / GitHub", "VS Code", "Vercel / Netlify", "npm / Node.js", "Figma (basic)"],
     },
     {
       icon: <FaLaptopCode />,
@@ -38,12 +38,7 @@ export default function Skills() {
     {
       icon: <FaUsers />,
       title: "Soft Skills",
-      items: [
-        "Effective Communication",
-        "Teamwork",
-        "Leadership",
-        "Quick Learning",
-      ],
+      items: ["Effective Communication", "Teamwork", "Leadership", "Quick Learning"],
     },
   ];
 
@@ -109,22 +104,19 @@ export default function Skills() {
               </h3>
             </div>
 
-            {/* Skill Items */}
-            <div className="flex flex-wrap gap-3 pl-4 md:pl-14 border-l-2 border-emerald-500/20">
-              {skill.items.map((item, i) => (
-                <motion.span
-                  key={i}
-                  whileHover={{
-                    scale: 1.05,
-                    backgroundColor: "#10b981",
-                    color: "#000",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-600 dark:text-gray-300 transition-colors duration-300 cursor-default shadow-sm"
-                >
-                  {item}
-                </motion.span>
-              ))}
+            {/* Skill Items: simple tag list for recruiter-friendly scan */}
+            <div className="pl-4 md:pl-14 border-l-2 border-emerald-500/20 w-full">
+              <div className="flex flex-wrap gap-3">
+                {skill.items.map((item, i) => (
+                  <motion.span
+                    key={i}
+                    whileHover={{ scale: 1.04 }}
+                    className="px-3 py-1.5 text-sm font-medium rounded-full bg-[#0b0b0b] border border-emerald-500/20 text-gray-200 transition-all duration-200 cursor-default shadow-sm"
+                  >
+                    {item}
+                  </motion.span>
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}
